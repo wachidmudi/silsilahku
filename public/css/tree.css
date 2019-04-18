@@ -87,6 +87,9 @@ body {
     margin-top: 1px;
     border-radius: 0;
 }
+.entry span.label {
+    color: #636b6f !important;
+}
 
 #wrapper span.label {
     display: block;
