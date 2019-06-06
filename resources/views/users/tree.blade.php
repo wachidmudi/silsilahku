@@ -19,7 +19,17 @@ $ggccTotal = 0;
         <div class="branch lv1">
             @foreach($user->childs as $child)
             <div class="entry {{ $childsCount == 1 ? 'sole' : '' }}">
-                <span class="label">{{ link_to_route('users.tree', $child->name, [$child->id], ['title' => $child->name.' ('.$child->gender.')']) }} "{{ $child->nickname }}"</span>
+                <span class="label">
+                    {{ link_to_route(
+                        'users.tree', 
+                        '#' .$child->birth_order. ' ' .$child->name, 
+                        [$child->id], 
+                        ['title' => $child->name.' ('.$child->gender.')']) 
+                    }}
+                    @if ($child->name !== $child->nickname)
+                    "{{ $child->nickname }}"
+                    @endif
+                </span>
                 @if ($grandsCount = $child->childs->count())
                 <?php $grandChildsTotal += $grandsCount ?>
                 <div class="branch lv2">
